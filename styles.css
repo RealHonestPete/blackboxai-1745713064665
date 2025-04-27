@@ -1,0 +1,138 @@
+/* Custom animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.capture-active {
+    animation: pulse 2s infinite;
+}
+
+/* Custom styles */
+.client-box {
+    border: 2px dashed #4a5568;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: crosshair;
+}
+
+.client-box.captured {
+    border-color: #48bb78;
+    background-color: rgba(72, 187, 120, 0.1);
+}
+
+.selection-area {
+    position: fixed;
+    border: 2px solid #48bb78;
+    background-color: rgba(72, 187, 120, 0.1);
+    pointer-events: none;
+    display: none;
+    z-index: 1001;
+}
+
+.selection-area.active {
+    display: block;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    z-index: 1000;
+    cursor: crosshair;
+}
+
+.overlay.active {
+    display: block;
+}
+
+.overlay-instructions {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1001;
+}
+
+.coordinates-display {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-family: monospace;
+    z-index: 1001;
+}
+
+/* Status indicator */
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.status-dot.running {
+    background-color: #48bb78;
+    box-shadow: 0 0 8px #48bb78;
+}
+
+.status-dot.stopped {
+    background-color: #f56565;
+    box-shadow: 0 0 8px #f56565;
+}
+
+/* Button hover effects */
+.btn-hover-effect {
+    transition: all 0.2s ease;
+}
+
+.btn-hover-effect:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-hover-effect:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Timer display enhancement */
+.timer-display {
+    text-shadow: 0 0 10px rgba(66, 153, 225, 0.5);
+    letter-spacing: 2px;
+}
+
+/* Status message animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.status-message {
+    animation: fadeInUp 0.3s ease-out;
+}
+
+/* Main container should be above the overlay */
+.container {
+    position: relative;
+    z-index: 1002;
+}
