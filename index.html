@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuneScape Bot Interface</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-900 text-white min-h-screen relative">
+    <!-- Overlay for client capture -->
+    <div id="captureOverlay" class="overlay">
+        <div class="overlay-instructions">Click and drag to select the game client area</div>
+        <div id="selectionArea" class="selection-area"></div>
+        <div id="coordinates" class="coordinates-display">0, 0</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8 relative">
+        <div class="max-w-md mx-auto bg-gray-800 rounded-lg shadow-lg p-6">
+            <h1 class="text-2xl font-bold mb-6 text-center">RuneScape Bot Control</h1>
+            
+            <!-- Timer Display -->
+            <div class="mb-6 text-center">
+                <h2 class="text-lg mb-2">Runtime</h2>
+                <div id="timer" class="text-3xl font-mono bg-gray-700 rounded p-3 timer-display">00:00:00</div>
+            </div>
+
+            <!-- Client Capture Section -->
+            <div class="mb-6">
+                <button id="captureBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded flex items-center justify-center gap-2 btn-hover-effect">
+                    <i class="fas fa-crosshairs"></i>
+                    Capture Game Client
+                </button>
+                <p id="captureStatus" class="mt-2 text-sm text-center text-gray-400">No client captured</p>
+            </div>
+
+            <!-- Start/Stop Button -->
+            <button id="startStopBtn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded flex items-center justify-center gap-2 btn-hover-effect">
+                <i class="fas fa-play"></i>
+                Start Bot
+            </button>
+
+            <!-- Status Display -->
+            <div class="mt-6 p-4 bg-gray-700 rounded">
+                <h3 class="font-bold mb-2">Status</h3>
+                <div class="flex items-center">
+                    <span class="status-dot stopped"></span>
+                    <p id="statusText" class="text-sm text-gray-300 status-message">Ready to start</p>
+                </div>
+            </div>
+
+            <!-- Client Preview Box -->
+            <div class="mt-6">
+                <div id="clientPreview" class="client-box w-full h-48 rounded flex items-center justify-center">
+                    <p class="text-gray-500">No client captured</p>
+                    <div class="absolute top-0 left-0 w-full h-full">
+                        <div id="previewSelection" class="selection-area"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Capture Dimensions -->
+            <div class="mt-4 bg-gray-700 rounded p-4">
+                <h3 class="font-bold mb-2">Capture Area</h3>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <span class="text-gray-400">Position:</span>
+                        <span id="capturePosition" class="ml-2 font-mono">0, 0</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400">Size:</span>
+                        <span id="captureSize" class="ml-2 font-mono">0 x 0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="bot.js"></script>
+</body>
+</html>
